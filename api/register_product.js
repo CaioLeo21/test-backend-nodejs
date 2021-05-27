@@ -4,9 +4,11 @@ module.exports = app => {
 
     const register_product = async (req, res) => {
         try {
-            const product = await Product.create(req.body)
+            const register = req.body
+            const product = await Product.create(register)
     
-            return res.status(201).send({ message: "Produto registrado com sucesso!", data: { product } })
+            return res.status(201).send({ message: "Produto registrado com sucesso!", data: { product } })           
+            
         } catch (error) {
             console.log(error)
 
