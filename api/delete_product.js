@@ -8,9 +8,8 @@ module.exports = app => {
             const findTitle = await Product.findOneAndDelete({ title: title })
 
             if (findTitle) {
-                return res.status(202).send("Produto excluído com sucesso!")
-            }
-            else{
+                return res.status(202).send({ message: "Produto excluído com sucesso!", data: { findTitle }})
+            }else{
                 return res.status(400).send(`O título "${title}" não existe!`)
             }
         } catch (error) {
