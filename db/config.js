@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-mongoose.connect('mongoose://localhost/backendDB', { useNewUrlParser: true })
+mongoose.connect('mongodb://localhost/backendDB', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log('backendDB conectado com sucesso!')
     })
