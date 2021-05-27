@@ -6,10 +6,9 @@ module.exports = app => {
         try {
             const update = req.body
             const title = req.params.title
+            const findTitle = await Product.findOneAndUpdate({ title: title }, update)
 
-            if (await Product.findOne({ title: title })) {
-                await Product.update(update)
-
+            if (findTitle) {
                 return res.status(200).send({ message: "Produto atualizado com sucesso!", data: { update }})
             }else{
                 return res.status(400).send(`Título ${title} não existente!`)
